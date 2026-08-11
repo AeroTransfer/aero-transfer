@@ -10,17 +10,4 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
     }
-
-    const bookingForm = document.getElementById("bookingForm");
-
-    if (bookingForm) {
-        bookingForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            alert("Thank you! Your booking request has been submitted successfully.");
-
-            bookingForm.reset();
-        });
-    }
-
-});
+    
