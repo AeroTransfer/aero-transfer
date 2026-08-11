@@ -1,0 +1,778 @@
+/* ================================
+   AERO TRANSFER - MAIN STYLES
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #17233c;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    border-bottom: 1px solid #e8edf5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo img {
+    width: 155px;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a {
+    font-size: 15px;
+    font-weight: 600;
+    color: #17233c;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #168bd2;
+}
+
+.nav-btn,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 13px 24px;
+    font-weight: 700;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.nav-btn {
+    background: #0c2c61;
+    color: #ffffff;
+}
+
+.nav-btn:hover {
+    background: #168bd2;
+}
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+    min-height: 680px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(5, 24, 54, 0.65), rgba(5, 24, 54, 0.70)),
+        url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(4, 24, 55, 0.88),
+        rgba(4, 24, 55, 0.35),
+        rgba(4, 24, 55, 0.15)
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    max-width: 760px;
+    padding: 90px 0;
+}
+
+.hero-small {
+    color: #5fc2ff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.hero-text {
+    max-width: 650px;
+    font-size: 19px;
+    color: #e7eef8;
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn.primary {
+    background: #168bd2;
+    color: #ffffff;
+}
+
+.btn.primary:hover {
+    background: #0c6eae;
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.btn.secondary:hover {
+    background: #ffffff;
+    color: #0c2c61;
+}
+
+/* ================================
+   GENERAL SECTIONS
+================================ */
+
+.section {
+    padding: 90px 0;
+}
+
+.section.light {
+    background: #f5f8fc;
+}
+
+.section.dark {
+    background: #071c3b;
+    color: #ffffff;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.section-label {
+    color: #168bd2;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+}
+
+.section-heading h2,
+.about h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    margin-bottom: 15px;
+}
+
+.section-heading > p:last-child {
+    color: #66758c;
+}
+
+/* ================================
+   ABOUT
+================================ */
+
+.about {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.about-text {
+    color: #5f6e83;
+    font-size: 17px;
+}
+
+.about-text p + p {
+    margin-top: 20px;
+}
+
+/* ================================
+   SERVICE CARDS
+================================ */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 30px 24px;
+    border: 1px solid #e4eaf2;
+    border-radius: 14px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(18, 52, 86, 0.12);
+}
+
+.icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    background: #e8f5fd;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #66758c;
+}
+
+/* ================================
+   FLEET
+================================ */
+
+.fleet {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.fleet-card {
+    overflow: hidden;
+    border-radius: 15px;
+    background: #ffffff;
+    border: 1px solid #e3e9f1;
+    box-shadow: 0 10px 30px rgba(10, 40, 80, 0.07);
+}
+
+.vehicle-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+
+.vehicle-image.sedan {
+    background-image:
+        linear-gradient(rgba(5, 30, 65, 0.10), rgba(5, 30, 65, 0.10)),
+        url("https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80");
+}
+
+.vehicle-image.suv {
+    background-image:
+        linear-gradient(rgba(5, 30, 65, 0.10), rgba(5, 30, 65, 0.10)),
+        url("https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80");
+}
+
+.vehicle-image.van {
+    background-image:
+        linear-gradient(rgba(5, 30, 65, 0.10), rgba(5, 30, 65, 0.10)),
+        url("https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1000&q=80");
+}
+
+.fleet-info {
+    padding: 25px;
+}
+
+.fleet-info h3 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.fleet-info p {
+    color: #66758c;
+    margin-bottom: 15px;
+}
+
+.fleet-info span {
+    display: block;
+    font-size: 14px;
+    color: #3e526d;
+    margin-bottom: 20px;
+}
+
+.fleet-info a {
+    display: inline-block;
+    color: #168bd2;
+    font-weight: 800;
+}
+
+/* ================================
+   WHY CHOOSE US
+================================ */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    text-align: center;
+}
+
+.features > div {
+    padding: 25px 15px;
+}
+
+.features span {
+    font-size: 38px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.features h3 {
+    margin-bottom: 8px;
+}
+
+.features p {
+    color: #b9c7d9;
+}
+
+/* ================================
+   BOOKING FORM
+================================ */
+
+.booking-section {
+    background: #ffffff;
+}
+
+.booking-form {
+    max-width: 900px;
+    margin: auto;
+    padding: 35px;
+    border: 1px solid #e0e7f0;
+    border-radius: 16px;
+    box-shadow: 0 15px 45px rgba(15, 42, 75, 0.08);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #ccd6e3;
+    border-radius: 8px;
+    padding: 13px 14px;
+    font: inherit;
+    color: #17233c;
+    background: #ffffff;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #168bd2;
+    box-shadow: 0 0 0 3px rgba(22, 139, 210, 0.12);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    border: none;
+    width: 100%;
+    grid-column: 1 / -1;
+    font-size: 16px;
+}
+
+/* ================================
+   PAYMENT
+================================ */
+
+.payment-options {
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.payment-options div {
+    background: #ffffff;
+    border: 1px solid #e1e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+/* ================================
+   REVIEWS
+================================ */
+
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.review {
+    border: 1px solid #e1e8f0;
+    border-radius: 14px;
+    padding: 28px;
+    background: #ffffff;
+}
+
+.review > div {
+    color: #f5b400;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.review p {
+    color: #5f6e83;
+    margin-bottom: 18px;
+}
+
+/* ================================
+   FAQ
+================================ */
+
+.faq {
+    max-width: 850px;
+}
+
+.faq .section-heading {
+    max-width: none;
+}
+
+.faq details {
+    background: #ffffff;
+    border: 1px solid #dfe6ef;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding: 18px 20px;
+}
+
+.faq summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.faq details p {
+    color: #66758c;
+    padding-top: 12px;
+}
+
+/* ================================
+   CONTACT
+================================ */
+
+.contact-section {
+    background: #071c3b;
+    color: #ffffff;
+}
+
+.contact-section .section-heading > p:last-child {
+    color: #b8c6d8;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.contact-grid > div {
+    padding: 25px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+}
+
+.contact-grid span {
+    font-size: 30px;
+}
+
+.contact-grid h3 {
+    margin: 10px 0 5px;
+}
+
+.contact-grid p {
+    color: #b8c6d8;
+    font-size: 14px;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer {
+    background: #041328;
+    color: #ffffff;
+    padding: 45px 0 25px;
+    text-align: center;
+}
+
+.footer img {
+    width: 170px;
+    margin: 0 auto 25px;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 7px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.footer-links a {
+    color: #c8d3e1;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #5fc2ff;
+}
+
+.footer p {
+    color: #8292a7;
+    font-size: 13px;
+}
+
+/* ================================
+   WHATSAPP BUTTON
+================================ */
+
+.whatsapp {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+}
+
+.whatsapp:hover {
+    transform: scale(1.08);
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+    nav {
+        display: none;
+    }
+
+    .nav-btn {
+        padding: 10px 16px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fleet {
+        grid-template-columns: 1fr;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 600px) 
+
+    .nav {
+        min-height: 70px;
+    }
+
+    .logo img {
+        width: 125px;
+    }
+
+    .nav-btn {
+        font-size: 13px;
+        padding: 9px 13px;
+    }
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero-content {
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 65px 0;
+    }
+
+    .cards,
+    .features,
+    .reviews,
+    .payment-options,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-form {
+        grid-template-columns: 1fr;
+        padding: 22px;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .submit-btn {
+        grid-column: auto;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+
+    .whatsapp {
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        bottom: 16px;
+    }
+@media (max-width: 768px) {
+  .header .container.nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .header nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 1000;
+  }
+
+  .header nav.active {
+    display: flex;
+  }
+
+  .header nav a {
+    padding: 10px 0;
+    display: block;
+  }
+}
