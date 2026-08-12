@@ -4,11 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const nav = document.querySelector(".header nav");
 
     if (menuToggle && nav) {
-
         menuToggle.onclick = function () {
             nav.classList.toggle("active");
         };
-
     }
-    
-    });
+
+});
