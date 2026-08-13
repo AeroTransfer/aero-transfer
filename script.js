@@ -19,9 +19,23 @@ const BOOKING_EMAIL = "aerotransfer001@gmail.com";
 const bookingForm = document.getElementById("bookingForm");
 
 if (bookingForm) {
+if (bookingForm.dataset.bookingHandlerAttached === "true") {
+    return;
+}
+bookingForm.dataset.bookingHandlerAttached = "true";
 
+const submitButton = bookingForm.querySelector('button[type="submit"]');
     bookingForm.addEventListener("submit", async function (event) {
+if (bookingForm.dataset.submitting === "true") {
+    return;
+}
 
+bookingForm.dataset.submitting = "true";
+
+if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+}
         event.preventDefault();
 
         const data = {
@@ -110,7 +124,12 @@ if (bookingForm) {
             // ===== SUCCESS =====
             alert("Booking successfully submitted! ✅");
             bookingForm.reset();
+bookingForm.dataset.submitting = "false";
 
+if (submitButton) {
+    submitButton.disabled = false;
+    submitButton.textContent = "Submit Booking";
+}
         } catch (error) {
 
             console.error("Booking error:", error);
