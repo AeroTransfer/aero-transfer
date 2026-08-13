@@ -7,36 +7,38 @@ document.addEventListener("DOMContentLoaded", function () {
             nav.classList.toggle("active");
         });
     }
-});
 
-// ===== SUPABASE + EMAIL BOOKING =====
-const SUPABASE_URL = "https://bfevvtwqbfsdmpsimihg.supabase.co";
-const SUPABASE_KEY = "sb_publishable_aCUZDAl_ZLqlfyynLI0O7w_Baf_zJp8";
+    const bookingForm = document.getElementById("bookingForm");
 
-// YAHAN WAHI EMAIL HAI JIS PAR FORMSUBMIT EMAIL AATI HAI
-const BOOKING_EMAIL = "aerotransfer001@gmail.com";
+    if (!bookingForm) {
+        return;
+    }
 
-const bookingForm = document.getElementById("bookingForm");
+    // Prevent attaching the booking handler more than once
+    if (bookingForm.dataset.bookingHandlerAttached === "true") {
+        return;
+    }
 
-if (bookingForm) {
-if (bookingForm.dataset.bookingHandlerAttached === "true") {
-    return;
-}
-bookingForm.dataset.bookingHandlerAttached = "true";
+    bookingForm.dataset.bookingHandlerAttached = "true";
 
-const submitButton = bookingForm.querySelector('button[type="submit"]');
+    const submitButton = bookingForm.querySelector(
+        'button[type="submit"]'
+    );
+
     bookingForm.addEventListener("submit", async function (event) {
-if (bookingForm.dataset.submitting === "true") {
-    return;
-}
-
-bookingForm.dataset.submitting = "true";
-
-if (submitButton) {
-    submitButton.disabled = true;
-    submitButton.textContent = "Submitting...";
-}
         event.preventDefault();
+
+        // Prevent duplicate submissions
+        if (bookingForm.dataset.submitting === "true") {
+            return;
+        }
+
+        bookingForm.dataset.submitting = "true";
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Submitting...";
+        }
 
         const data = {
             name: document.getElementById("name")?.value?.trim() || "",
@@ -46,24 +48,37 @@ if (submitButton) {
             drop: document.getElementById("drop")?.value?.trim() || "",
             date: document.getElementById("date")?.value || null,
             time: document.getElementById("time")?.value || null,
-            passengers: Number(document.getElementById("passengers")?.value || 0),
-            vehicle: document.getElementById("vehicle")?.value?.trim() || "",
-            flight: document.getElementById("flight")?.value?.trim() || "",
-            message: document.getElementById("message")?.value?.trim() || ""
+            passengers: Number(
+                document.getElementById("passengers")?.value || 0
+            ),
+            vehicle:
+                document.getElementById("vehicle")?.value?.trim() || "",
+            flight:
+                document.getElementById("flight")?.value?.trim() || "",
+            message:
+                document.getElementById("message")?.value?.trim() || ""
         };
 
-        try {
+        const SUPABASE_URL =
+            "https://bfevvtwqbfsdmpsimihg.supabase.co";
 
+        const SUPABASE_KEY =
+            "sb_publishable_aCUZDAl_ZLqlfyynLI0O7w_Baf_zJp8";
+
+        const BOOKING_EMAIL =
+            "aerotransfer001@gmail.com";
+
+        try {
             // ===== 1. SAVE TO SUPABASE =====
             const response = await fetch(
                 `${SUPABASE_URL}/rest/v1/bookings`,
                 {
                     method: "POST",
                     headers: {
-                        "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${SUPABASE_KEY}`,
+                        apikey: SUPABASE_KEY,
+                        Authorization: `Bearer ${SUPABASE_KEY}`,
                         "Content-Type": "application/json",
-                        "Prefer": "return=minimal"
+                        Prefer: "return=minimal"
                     },
                     body: JSON.stringify(data)
                 }
@@ -71,8 +86,16 @@ if (submitButton) {
 
             if (!response.ok) {
                 const errorText = await response.text();
-                console.error("Supabase error:", errorText);
-                alert("Booking save nahi hui.");
+
+                console.error(
+                    "Supabase error:",
+                    errorText
+                );
+
+                alert(
+                    "Booking save nahi hui. Please dobara try karo."
+                );
+
                 return;
             }
 
@@ -85,10 +108,11 @@ if (submitButton) {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Accept": "application/json"
+                        Accept: "application/json"
                     },
                     body: JSON.stringify({
-                        _subject: "🚗 New AERO TRANSFER Booking",
+                        _subject:
+                            "🚗 New AERO TRANSFER Booking",
                         name: data.name,
                         phone: data.phone,
                         email: data.email,
@@ -105,9 +129,12 @@ if (submitButton) {
             );
 
             if (!emailResponse.ok) {
+                const emailError =
+                    await emailResponse.text();
+
                 console.error(
                     "Email failed:",
-                    await emailResponse.text()
+                    emailError
                 );
 
                 alert(
@@ -115,29 +142,38 @@ if (submitButton) {
                     "lekin email send nahi hui."
                 );
 
-                bookingForm.reset();
                 return;
             }
 
             console.log("Booking email sent.");
 
             // ===== SUCCESS =====
-            alert("Booking successfully submitted! ✅");
             bookingForm.reset();
-bookingForm.dataset.submitting = "false";
 
-if (submitButton) {
-    submitButton.disabled = false;
-    submitButton.textContent = "Submit Booking";
-}
+            alert(
+                "Booking successfully submitted! ✅"
+            );
+
         } catch (error) {
-
-            console.error("Booking error:", error);
+            console.error(
+                "Booking error:",
+                error
+            );
 
             alert(
                 "Booking connection failed. " +
                 "Internet connection check karo."
             );
+
+        } finally {
+            // Always unlock the form
+            bookingForm.dataset.submitting = "false";
+
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent =
+                    "Submit Booking";
+            }
         }
     });
-}
+});
